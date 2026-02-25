@@ -80,7 +80,7 @@ export default function Home() {
           <h1 className="text-2xl font-bold">Global Game Monitor</h1>
         </div>
         <p className="text-[#6b7280] text-sm">
-          RSS từ {Object.keys(RSS_FEEDS).length} nguồn • Cập nhật mỗi 5 phút
+          RSS từ {FEED_SOURCES.length} nguồn • Cập nhật mỗi 5 phút
         </p>
       </header>
 
