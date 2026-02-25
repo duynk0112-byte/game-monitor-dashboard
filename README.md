@@ -57,15 +57,46 @@ NEXT_PUBLIC_WORKER_URL=https://your-worker.workers.dev
 - ✅ Dark theme mặc định
 - ✅ Responsive mobile/desktop
 
-## 💡 Commands
+## 🚀 Deploy
 
 ```bash
-# Worker dev
-cd worker && npm run dev
+# Backend
+cd worker
+npm install
+npm run dev         # http://localhost:8787
+npx wrangler deploy   # Deploy to Cloudflare
 
-# Frontend dev  
-cd frontend && npm run dev
-
-# Build
-cd frontend && npm run build
+# Frontend
+cd frontend
+npm install
+cp .env.example .env.local
+npm run dev         # http://localhost:3000
+npm run build        # Production build
 ```
+
+## ⬆️ Auto Deploy lên GitHub
+
+**Cách 1: Auto (không cần username)**
+
+```bash
+cd /root/.openclaw/workspace/game-monitor
+
+export GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxxxxxx
+./auto-deploy.sh
+```
+
+Xem chi tiết: [AUTO_DEPLOY.md](./AUTO_DEPLOY.md)
+
+**Cách 2: SSH (cần username)**
+
+```bash
+# 1. Thay YOUR_USERNAME trong remote
+git remote set-url origin git@github.com:YOUR_USERNAME/global-game-monitor.git
+
+# 2. Push
+git push -u origin master
+```
+
+---
+
+**Khuyên nghị:** Dùng **Auto Deploy** - nhanh hơn, tự động hơn!
