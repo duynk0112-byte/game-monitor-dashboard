@@ -3,21 +3,199 @@
 @tailwind utilities;
 
 :root {
-  --foreground: #ffffff;
-  --background: #0a0a0a;
-  --card: #1a1a1a;
-  --border: #2a2a2a;
-  --primary: #8b5cf6;
-  --muted: #6b7280;
+  --foreground: #0f172a;
+  --background: #f8fafc;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --primary: #0ea5e9;
+  --primary-dark: #0284c7;
+  --muted: #64748b;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --error: #ef4444;
+}
+
+.dark {
+  --foreground: #f1f5f9;
+  --background: #020617;
+  --card: #0f172a;
+  --border: #1e293b;
+  --primary: #0ea5e9;
+  --primary-dark: #38bdf8;
+  --muted: #64748b;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --error: #ef4444;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(14, 165, 233, 0.3);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(14, 165, 233, 0.5);
+}
+
+/* Line Clamp for Text */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Focus Ring */
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background: rgba(14, 165, 233, 0.3);
+  color: inherit;
+}
+
+::-moz-selection {
+  background: rgba(14, 165, 233, 0.3);
+  color: inherit;
+}
+
+/* Utility Classes */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* Button Hover Effect */
+@layer utilities {
+  .hover-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Dark mode specific adjustments */
+.dark * {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(14, 165, 233, 0.3) transparent;
+}
+
+/* Smooth transitions for dark mode toggle */
+* {
+  transition-property: color, background-color, border-color;
+  transition-duration: 300ms;
+  transition-timing-function: ease;
+}
+
+/* Better readability */
+p, h1, h2, h3, h4, h5, h6 {
+  line-height: 1.6;
+}
+
+/* Link hover effects */
+a {
+  transition: color 0.2s ease;
+}
+
+/* Input focus styles */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1);
+}
+
+/* Card hover effect */
+@layer utilities {
+  .card-hover {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Loading animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
