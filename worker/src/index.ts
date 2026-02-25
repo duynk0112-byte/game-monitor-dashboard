@@ -29,24 +29,65 @@ const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'GET, HEAD, POST, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type',
-  'Cache-Control': 'public, max-age=300', // 5 min cache
+  'Cache-Control': 'public, max-age=300',
 };
 
-// Parse RSS to JSON
-async function parseRSS(xmlText: string) {
-  const parser = new DOMParser();
-  const xml = parser.parseFromString(xmlText, 'text/xml');
-  const items = Array.from(xml.querySelectorAll('item')).map(item => {
-    const title = item.querySelector('title')?.textContent || '';
-    const link = item.querySelector('link')?.textContent || '';
-    const pubDate = item.querySelector('pubDate')?.textContent || '';
-    const description = item.querySelector('description')?.textContent || '';
-    const category = item.querySelector('category')?.textContent || '';
+// Simple RSS/Atom XML parser (Workers-compatible)
+function parseRSS(xmlText: string) {
+  const items: Array<{
+    title: string;
+    link: string;
+    pubDate: string;
+    description: string;
+    category: string;
+  }> = [];
 
-    return { title, link, pubDate, description, category };
-  });
+  // Extract <item> blocks
+  const itemRegex = /<item[^>]*>([\s\S]*?)<\/item>/gi;
+  const itemMatches = xmlText.match(itemRegex) || [];
+
+  for (const itemXml of itemMatches) {
+    const item: any = {};
+
+    // Extract specific tags using regex
+    const titleMatch = itemXml.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
+    const linkMatch = itemXml.match(/<link[^>]*>([\s\S]*?)<\/link>/i);
+    const pubDateMatch = itemXml.match(/<pubDate[^>]*>([\s\S]*?)<\/pubDate>/i);
+    const descriptionMatch = itemXml.match(/<description[^>]*><!\[CDATA\[([\s\S]*?)\]\]><\/description>/i)
+      || itemXml.match(/<description[^>]*>([\s\S]*?)<\/description>/i);
+    const categoryMatch = itemXml.match(/<category[^>]*>([\s\S]*?)<\/category>/i);
+
+    if (titleMatch) item.title = decodeHTML(titleMatch[1]);
+    if (linkMatch) item.link = linkMatch[1].trim();
+    if (pubDateMatch) item.pubDate = pubDateMatch[1];
+    if (descriptionMatch) item.description = decodeHTML(descriptionMatch[1]);
+    if (categoryMatch) item.category = categoryMatch[1];
+
+    // Only add if we have required fields
+    if (item.title && item.link) {
+      items.push({
+        title: item.title,
+        link: item.link,
+        pubDate: item.pubDate || '',
+        description: item.description || '',
+        category: item.category || '',
+      });
+    }
+  }
 
   return items;
+}
+
+// Decode HTML entities
+function decodeHTML(text: string): string {
+  return text
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/<[^>]+>/g, '')
+    .trim();
 }
 
 // Environment with optional KV
@@ -84,7 +125,7 @@ router.get('/api/feeds/:source', async (request, env) => {
   try {
     const response = await fetch(RSS_FEEDS[source], {
       cf: {
-        cacheTtl: 300, // 5 min CDN cache
+        cacheTtl: 300,
       },
     });
 
@@ -93,11 +134,11 @@ router.get('/api/feeds/:source', async (request, env) => {
     }
 
     const xmlText = await response.text();
-    const items = await parseRSS(xmlText);
+    const items = parseRSS(xmlText);
 
     const data = {
       source,
-      items: items.slice(0, 20), // Limit 20 items
+      items: items.slice(0, 20),
       fetchedAt: new Date().toISOString(),
     };
 
@@ -163,7 +204,6 @@ router.all('*', () => {
   });
 });
 
-// Export for Cloudflare Workers
 export default {
   fetch: (request: Request, env: Env) => {
     return router.handle(request, env).catch((err) => {
