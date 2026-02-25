@@ -248,6 +248,7 @@ export default function Home() {
               </button>
             </div>
           </div>
+          </header>
 
           <div className="flex gap-2 mb-6">
             <button
