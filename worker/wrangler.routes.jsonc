@@ -7,5 +7,10 @@
   "vars": {
     "ENVIRONMENT": "production"
   },
-  "routes": []
+  "routes": [
+    {
+      "pattern": "api.yourdomain.com/*",
+      "zone_name": "yourdomain.com"
+    }
+  ]
 }
