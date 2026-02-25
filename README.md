@@ -80,3 +80,16 @@ npx vercel deploy --prod --yes --token=YOUR_TOKEN
 ---
 
 **Lưu ý:** Push bất kỳ thay đổi để trigger deploy tự động!
+
+---
+
+### 🚀 Deploy Phương án thay thế
+
+Nếu GitHub Actions không hoạt động, bạn có thể deploy trực tiếp lên **Cloudflare Pages**:
+
+**Hướng dẫn chi tiết:** Xem [CLOUDFLARE_PAGES.md](./CLOUDFLARE_PAGES.md)
+
+**Lệnh deploy nhanh:**
+```bash
+npx wrangler pages deploy ./frontend/.next --project-name=game-monitor-dashboard
+```
