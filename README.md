@@ -59,19 +59,28 @@ NEXT_PUBLIC_WORKER_URL=https://your-worker.workers.dev
 
 ## 🚀 Deploy
 
+### Worker Backend (Cloudflare)
+
 ```bash
-# Backend
 cd worker
 npm install
-npm run dev         # http://localhost:8787
+npx wrangler login    # Login to Cloudflare (browsers)
 npx wrangler deploy   # Deploy to Cloudflare
+```
 
-# Frontend
+**详细指南**: [DEPLOY_STATUS.md](./worker/DEPLOY_STATUS.md) | [DEPLOY_GUIDE.md](./worker/DEPLOY_GUIDE.md)
+
+### Frontend (Next.js)
+
+```bash
 cd frontend
 npm install
 cp .env.example .env.local
-npm run dev         # http://localhost:3000
-npm run build        # Production build
+# Update NEXT_PUBLIC_WORKER_URL with deployed worker URL
+npm run build
+vercel --prod         # Deploy to Vercel
+# OR
+netlify deploy --prod # Deploy to Netlify
 ```
 
 ## ⬆️ Auto Deploy lên GitHub

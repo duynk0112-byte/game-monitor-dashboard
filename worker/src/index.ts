@@ -49,9 +49,9 @@ async function parseRSS(xmlText: string) {
   return items;
 }
 
-// Cache with KV
+// Environment with optional KV
 interface Env {
-  RSS_CACHE: KVNamespace;
+  RSS_CACHE?: KVNamespace;
 }
 
 // GET /api/feeds/:source
@@ -66,12 +66,19 @@ router.get('/api/feeds/:source', async (request, env) => {
   }
 
   const cacheKey = `rss:${source}`;
-  const cached = await env.RSS_CACHE.get(cacheKey, 'json');
 
-  if (cached) {
-    return new Response(JSON.stringify(cached), {
-      headers: { ...corsHeaders, 'X-Cache': 'HIT' },
-    });
+  // Try KV cache first (if available)
+  if (env.RSS_CACHE) {
+    try {
+      const cached = await env.RSS_CACHE.get(cacheKey, 'json');
+      if (cached) {
+        return new Response(JSON.stringify(cached), {
+          headers: { ...corsHeaders, 'X-Cache': 'HIT' },
+        });
+      }
+    } catch (error) {
+      // KV error - continue to fetch
+    }
   }
 
   try {
@@ -94,10 +101,16 @@ router.get('/api/feeds/:source', async (request, env) => {
       fetchedAt: new Date().toISOString(),
     };
 
-    // Cache for 5 minutes
-    await env.RSS_CACHE.put(cacheKey, JSON.stringify(data), {
-      expirationTtl: 300,
-    });
+    // Cache in KV (if available)
+    if (env.RSS_CACHE) {
+      try {
+        await env.RSS_CACHE.put(cacheKey, JSON.stringify(data), {
+          expirationTtl: 300,
+        });
+      } catch (error) {
+        // KV error - ignore
+      }
+    }
 
     return new Response(JSON.stringify(data), {
       headers: { ...corsHeaders, 'X-Cache': 'MISS' },
