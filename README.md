@@ -17,9 +17,9 @@ game-monitor/
     └── tsconfig.json
 ```
 
-## 🚀 Deploy
+## 🚀 Deployment
 
-### 1. Deploy Cloudflare Worker
+### Worker Backend (Cloudflare) ✅
 
 ```bash
 cd worker
@@ -27,112 +27,56 @@ npm install
 npx wrangler deploy
 ```
 
-### 2. Deploy Frontend
-
-```bash
-cd frontend
-npm install
-npm run build
-# Deploy to Vercel/Netlify/Cloudflare Pages
-```
-
-## 🔧 Environment Variables
-
-**Frontend (.env.local):**
-```
-NEXT_PUBLIC_WORKER_URL=https://your-worker.workers.dev
-```
-
-## 📡 RSS Feeds
-
-- Kotaku, IGN, PC Gamer, Polygon
-- GameSpot, Rock Paper Shotgun, Eurogamer
-- IndieDB, Itch.io (indie games)
-
-## ✨ Features
-
-- ✅ Cloudflare KV cache (5 min TTL)
-- ✅ CORS handled tự động
-- ✅ Auto refresh mỗi 5 phút
-- ✅ Dark theme mặc định
-- ✅ Responsive mobile/desktop
-
-## 🚀 Deploy
-
-### Worker Backend (Cloudflare) ✅
-
-**Status:** Deployed Successfully
 **URL:** https://global-game-monitor-worker.duy-nk0112.workers.dev
 
-```bash
-cd worker
-npm install
-npx wrangler deploy   # Already deployed!
-```
-
-### Frontend (Next.js) ⏸️
-
-```bash
-cd frontend
-npm install
-npm run build        # Build for production
-```
-
-**Deploy Options:**
-
-- **Vercel** (recommended):
-  ```bash
-  npx vercel --prod
-  ```
-
-- **Netlify**:
-  ```bash
-  npx netlify deploy --prod
-  ```
-
-**Note:** Frontend is already configured to use the deployed worker:
-```
-NEXT_PUBLIC_WORKER_URL=https://global-game-monitor-worker.duy-nk0112.workers.dev
-```
-
-**详细指南**: [DEPLOY_STATUS.md](./worker/DEPLOY_STATUS.md) | [DEPLOY_GUIDE.md](./worker/DEPLOY_GUIDE.md)
+---
 
 ### Frontend (Next.js)
 
-```bash
-cd frontend
-npm install
-cp .env.example .env.local
-# Update NEXT_PUBLIC_WORKER_URL with deployed worker URL
-npm run build
-vercel --prod         # Deploy to Vercel
-# OR
-netlify deploy --prod # Deploy to Netlify
-```
+**Option A: GitHub Actions (Automatic on push)**
 
-## ⬆️ Auto Deploy lên GitHub
+Workflow: `.github/workflows/deploy-to-vercel.yml`
 
-**Cách 1: Auto (không cần username)**
+Khi bạn push code vào nhánh `master`, deploy tự động sẽ chạy!
 
+**Trigger workflow:**
 ```bash
 cd /root/.openclaw/workspace/game-monitor
-
-export GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxxxxxx
-./auto-deploy.sh
+git commit --allow-empty -m "Trigger Vercel deploy workflow"
+git push origin master
 ```
 
-Xem chi tiết: [AUTO_DEPLOY.md](./AUTO_DEPLOY.md)
+Kết quả sau khi push:
+- ✅ Frontend deployed successfully
+- 📍 URL: https://game-monitor.vercel.app
+- 📊 Worker: https://global-game-monitor-worker.duy-nk0112.workers.dev
 
-**Cách 2: SSH (cần username)**
-
+**Option B: Deploy thủ công từ GitHub**
 ```bash
-# 1. Thay YOUR_USERNAME trong remote
-git remote set-url origin git@github.com:YOUR_USERNAME/global-game-monitor.git
-
-# 2. Push
-git push -u origin master
+npx vercel deploy --prod --yes --token=YOUR_TOKEN
 ```
 
 ---
 
-**Khuyên nghị:** Dùng **Auto Deploy** - nhanh hơn, tự động hơn!
+## 🔗 URLs
+
+| Service | URL |
+|----------|-----|
+| Worker | https://global-game-monitor-worker.duy-nk0112.workers.dev |
+| Frontend | https://game-monitor.vercel.app |
+| GitHub | https://github.com/duynk0112-byte/game-monitor-dashboard |
+
+---
+
+## 📋 Tech Stack
+
+| Component | Technology |
+|-----------|-----------|
+| Backend | Cloudflare Workers |
+| Frontend | Next.js 15 |
+| Runtime | 16ms startup |
+| RSS Sources | 12 feeds |
+
+---
+
+**Lưu ý:** Push bất kỳ thay đổi để trigger deploy tự động!
