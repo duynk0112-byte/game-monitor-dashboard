@@ -59,13 +59,40 @@ NEXT_PUBLIC_WORKER_URL=https://your-worker.workers.dev
 
 ## 🚀 Deploy
 
-### Worker Backend (Cloudflare)
+### Worker Backend (Cloudflare) ✅
+
+**Status:** Deployed Successfully
+**URL:** https://global-game-monitor-worker.duy-nk0112.workers.dev
 
 ```bash
 cd worker
 npm install
-npx wrangler login    # Login to Cloudflare (browsers)
-npx wrangler deploy   # Deploy to Cloudflare
+npx wrangler deploy   # Already deployed!
+```
+
+### Frontend (Next.js) ⏸️
+
+```bash
+cd frontend
+npm install
+npm run build        # Build for production
+```
+
+**Deploy Options:**
+
+- **Vercel** (recommended):
+  ```bash
+  npx vercel --prod
+  ```
+
+- **Netlify**:
+  ```bash
+  npx netlify deploy --prod
+  ```
+
+**Note:** Frontend is already configured to use the deployed worker:
+```
+NEXT_PUBLIC_WORKER_URL=https://global-game-monitor-worker.duy-nk0112.workers.dev
 ```
 
 **详细指南**: [DEPLOY_STATUS.md](./worker/DEPLOY_STATUS.md) | [DEPLOY_GUIDE.md](./worker/DEPLOY_GUIDE.md)
