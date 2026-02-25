@@ -181,6 +181,18 @@ export default function Home() {
 
   const indieSources = FEED_SOURCES.filter(s => s.id === 'indiedb' || s.id === 'itch');
 
+  const handleNewsTabClick = () => {
+    setActiveTab('news');
+    setSelectedSources(new Set());
+    setSearchQuery('');
+  };
+
+  const handleIndieTabClick = () => {
+    setActiveTab('indie');
+    setSelectedSources(new Set());
+    setSearchQuery('');
+  };
+
   return (
     <div className={cn(
       "min-h-screen transition-colors duration-300",
@@ -248,15 +260,10 @@ export default function Home() {
               </button>
             </div>
           </div>
-          </header>
 
           <div className="flex gap-2 mb-6">
             <button
-              onClick={() => {
-                setActiveTab('news');
-                setSelectedSources(new Set());
-                setSearchQuery('');
-              }}
+              onClick={handleNewsTabClick}
               className={cn(
                 "flex items-center gap-2 px-6 py-3 rounded-xl border-2 font-medium transition-all hover:scale-105",
                 activeTab === 'news'
@@ -269,11 +276,7 @@ export default function Home() {
               <Zap size={16} className="dark:text-orange-400 text-orange-500" />
             </button>
             <button
-              onClick={() => {
-                setActiveTab('indie');
-                setSelectedSources(new Set());
-                setSearchQuery('');
-              }}
+              onClick={handleIndieTabClick}
               className={cn(
                 "flex items-center gap-2 px-6 py-3 rounded-xl border-2 font-medium transition-all hover:scale-105",
                 activeTab === 'indie'
