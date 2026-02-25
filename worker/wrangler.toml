@@ -1,0 +1,23 @@
+name = "game-monitor-worker"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+
+# KV namespace for RSS cache
+[[kv_namespaces]]
+binding = "RSS_CACHE"
+id = "rss_cache"
+
+# Variables (optional - add API keys here)
+# [vars]
+# STEAM_API_KEY = "your-key"
+
+[build]
+command = "npm run build"
+cwd = "worker"
+watch_dirs = ["src"]
+
+[env.production]
+vars = { ENVIRONMENT = "production" }
+
+[env.dev]
+vars = { ENVIRONMENT = "development" }
