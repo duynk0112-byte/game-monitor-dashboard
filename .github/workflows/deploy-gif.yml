@@ -1,0 +1,27 @@
+name: Deploy GIF Assets
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy-gif:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Deploy GIF to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          git clone https://github.com/your-gif-repo/game-assets.git
+          cd game-assets
+          npx vercel --prod --yes
+
+      - name: Delete GIF from Cloudflare Pages
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          npx wrangler pages delete ./frontend/.next/game-assets 2>/dev/null || true
