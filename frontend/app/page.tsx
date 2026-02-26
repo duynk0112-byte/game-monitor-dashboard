@@ -236,9 +236,9 @@ export default function Home() {
 
   return (
     <div className={cn(
-      "min-h-screen transition-colors duration-300",
-      "dark:bg-slate-950 bg-slate-50",
-      "dark:text-white text-slate-900"
+      'min-h-screen transition-colors duration-300',
+      'dark:bg-slate-950 bg-slate-50',
+      'dark:text-white text-slate-900'
     )}>
       <div className="max-w-7xl mx-auto p-4 md:p-6">
         <header className="mb-6 md:mb-8">
@@ -247,25 +247,25 @@ export default function Home() {
               <button
                 onClick={() => setSidebarOpen(!sidebarOpen)}
                 className={cn(
-                  "p-2 md:p-3 rounded-xl border-2 transition-all hover:scale-105",
-                  "dark:border-slate-700 border-slate-300",
-                  "dark:bg-slate-900 bg-white",
-                  "dark:text-sky-400 text-sky-600"
+                  'p-2 md:p-3 rounded-xl border-2 transition-all hover:scale-105',
+                  'dark:border-slate-700 border-slate-300',
+                  'dark:bg-slate-900 bg-white',
+                  'dark:text-sky-400 text-sky-600'
                 )}
               >
                 {sidebarOpen ? <ArrowLeft size={20} /> : <Filter size={20} />}
               </button>
               <div className={cn(
-                "p-3 md:p-4 rounded-2xl border-2 transition-colors",
-                "dark:border-sky-500 border-sky-400",
-                "dark:bg-sky-950/50 bg-sky-50"
+                'p-3 md:p-4 rounded-2xl border-2 transition-colors',
+                'dark:border-sky-500 border-sky-400',
+                'dark:bg-sky-950/50 bg-sky-50'
               )}>
                 <Gamepad2 size={28} className="dark:text-sky-400 text-sky-600" />
               </div>
               <div className="hidden md:block">
                 <h1 className={cn(
-                  "text-2xl md:text-3xl font-bold",
-                  "dark:text-white text-slate-900"
+                  'text-2xl md:text-3xl font-bold',
+                  'dark:text-white text-slate-900'
                 )}>
                   Global Game Monitor
                 </h1>
@@ -275,10 +275,10 @@ export default function Home() {
               <button
                 onClick={toggleTheme}
                 className={cn(
-                  "p-3 rounded-xl border-2 transition-all hover:scale-105",
-                  "dark:border-slate-700 border-slate-300",
-                  "dark:bg-slate-900 bg-white",
-                  "dark:text-sky-400 text-sky-600"
+                  'p-2 md:p-3 rounded-xl border-2 transition-all hover:scale-105',
+                  'dark:border-slate-700 border-slate-300',
+                  'dark:bg-slate-900 bg-white',
+                  'dark:text-sky-400 text-sky-600'
                 )}
               >
                 {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
@@ -286,10 +286,10 @@ export default function Home() {
               <button
                 onClick={() => setViewMode(viewMode === 'grid' ? 'list' : 'grid')}
                 className={cn(
-                  "p-3 rounded-xl border-2 transition-all hover:scale-105",
-                  "dark:border-slate-700 border-slate-300",
-                  "dark:bg-slate-900 bg-white",
-                  "dark:text-sky-400 text-sky-600"
+                  'p-2 md:p-3 rounded-xl border-2 transition-all hover:scale-105',
+                  'dark:border-slate-700 border-slate-300',
+                  'dark:bg-slate-900 bg-white',
+                  'dark:text-sky-400 text-sky-600'
                 )}
               >
                 {viewMode === 'grid' ? <List size={18} /> : <Grid size={18} />}
@@ -297,11 +297,11 @@ export default function Home() {
               <button
                 onClick={fetchAllFeeds}
                 className={cn(
-                  "p-3 rounded-xl border-2 transition-all hover:scale-105",
-                  "dark:border-slate-700 border-slate-300",
-                  "dark:bg-slate-900 bg-white",
-                  "dark:text-sky-400 text-sky-600",
-                  isRefreshing && "animate-spin"
+                  'p-2 md:p-3 rounded-xl border-2 transition-all hover:scale-105',
+                  'dark:border-slate-700 border-slate-300',
+                  'dark:bg-slate-900 bg-white',
+                  'dark:text-sky-400 text-sky-600',
+                  isRefreshing && 'animate-spin'
                 )}
               >
                 <RefreshCw size={18} />
@@ -314,10 +314,10 @@ export default function Home() {
               <button
                 onClick={handleNewsTabClick}
                 className={cn(
-                  "flex items-center gap-2 px-4 md:px-5 py-2 md:py-3 rounded-xl border-2 font-medium transition-all hover:scale-105 whitespace-nowrap",
+                  'flex items-center gap-2 px-4 md:px-5 py-2 md:py-3 rounded-xl border-2 font-medium transition-all hover:scale-105 whitespace-nowrap',
                   activeTab === 'news'
-                    ? "dark:border-sky-500 border-sky-400 dark:bg-sky-950/50 bg-sky-50 dark:text-sky-400 text-sky-600"
-                    : "dark:border-slate-700 border-slate-300 dark:bg-slate-900 bg-white dark:text-slate-300 text-slate-700 dark:hover:border-slate-600 hover:border-slate-400"
+                    ? 'dark:border-sky-500 border-sky-400 dark:bg-sky-950/50 bg-sky-50 dark:text-sky-400 text-sky-600'
+                    : 'dark:border-slate-700 border-slate-300 dark:bg-slate-900 bg-white dark:text-slate-300 text-slate-700 dark:hover:border-slate-600 hover:border-slate-400'
                 )}
               >
                 <Newspaper size={16} />
@@ -327,10 +327,10 @@ export default function Home() {
               <button
                 onClick={handleIndieTabClick}
                 className={cn(
-                  "flex items-center gap-2 px-4 md:px-5 py-2 md:py-3 rounded-xl border-2 font-medium transition-all hover:scale-105 whitespace-nowrap",
+                  'flex items-center gap-2 px-4 md:px-5 py-2 md:py-3 rounded-xl border-2 font-medium transition-all hover:scale-105 whitespace-nowrap',
                   activeTab === 'indie'
-                    ? "dark:border-sky-500 border-sky-400 dark:bg-sky-950/50 bg-sky-50 dark:text-sky-400 text-sky-600"
-                    : "dark:border-slate-700 border-slate-300 dark:bg-slate-900 bg-white dark:text-slate-300 text-slate-700 dark:hover:border-slate-600 hover:border-slate-400"
+                    ? 'dark:border-sky-500 border-sky-400 dark:bg-sky-950/50 bg-sky-50 dark:text-sky-400 text-sky-600'
+                    : 'dark:border-slate-700 border-slate-300 dark:bg-slate-900 bg-white dark:text-slate-300 text-slate-700 dark:hover:border-slate-600 hover:border-slate-400'
                 )}
               >
                 <Star size={16} />
@@ -347,22 +347,22 @@ export default function Home() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className={cn(
-                  "w-full pl-10 md:pl-11 pr-4 py-2 md:py-3 rounded-xl border-2",
-                  "focus:outline-none focus:ring-4 transition-all text-sm",
-                  "dark:bg-slate-900 bg-white",
-                  "dark:border-slate-700 border-slate-300",
-                  "dark:text-white text-slate-900",
-                  "dark:focus:border-sky-500 dark:focus:ring-sky-500/20",
-                  "focus:border-sky-400 focus:ring-sky-400/20",
-                  "placeholder:text-slate-400"
+                  'w-full pl-9 md:pl-11 pr-4 py-2 md:py-3 rounded-xl border-2',
+                  'focus:outline-none focus:ring-4 transition-all text-sm',
+                  'dark:bg-slate-900 bg-white',
+                  'dark:border-slate-700 border-slate-300',
+                  'dark:text-white text-slate-900',
+                  'dark:focus:border-sky-500 dark:focus:ring-sky-500/20',
+                  'focus:border-sky-400 focus:ring-sky-400/20',
+                  'placeholder:text-slate-400'
                 )}
               />
             </div>
 
             <div className={cn(
-              "hidden md:flex items-center gap-2 px-4 py-2 rounded-xl border-2",
-              "dark:border-slate-700 border-slate-300",
-              "dark:bg-slate-900 bg-white"
+              'hidden md:flex items-center gap-2 px-4 py-2 rounded-xl border-2',
+              'dark:border-slate-700 border-slate-300',
+              'dark:bg-slate-900 bg-white'
             )}>
               <Flame size={14} className="dark:text-orange-400 text-orange-500" />
               <span className="text-sm font-medium dark:text-slate-300 text-slate-700">
@@ -376,9 +376,9 @@ export default function Home() {
 
           {sidebarOpen && (
             <div className={cn(
-              "mb-6 p-4 rounded-2xl border-2",
-              "dark:border-slate-700 border-slate-300",
-              "dark:bg-slate-900 bg-white"
+              'mb-6 p-4 rounded-2xl border-2',
+              'dark:border-slate-700 border-slate-300',
+              'dark:bg-slate-900 bg-white'
             )}>
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-bold dark:text-white text-slate-900">Filters</h3>
@@ -392,14 +392,14 @@ export default function Home() {
                     key={source.id}
                     onClick={() => toggleSource(source.id)}
                     className={cn(
-                      "p-3 rounded-xl border-2 text-sm font-medium transition-all hover:scale-105 relative",
+                      'p-3 rounded-xl border-2 text-sm font-medium transition-all hover:scale-105 relative',
                       selectedSources.has(source.id)
-                        ? "dark:border-sky-500 border-sky-400 dark:bg-sky-950/50 bg-sky-50 dark:text-sky-400 text-sky-600"
+                        ? 'dark:border-sky-500 border-sky-400 dark:bg-sky-950/50 bg-sky-50 dark:text-sky-400 text-sky-600'
                         : errors[source.id]
-                        ? "dark:border-red-500 border-red-400 dark:bg-red-950/50 bg-red-50 dark:text-red-400 text-red-600"
+                        ? 'dark:border-red-500 border-red-400 dark:bg-red-950/50 bg-red-50 dark:text-red-400 text-red-600'
                         : feeds[source.id]
-                        ? "dark:border-green-500 border-green-400 dark:bg-green-950/50 bg-green-50 dark:text-green-400 text-green-600"
-                        : "dark:border-slate-700 border-slate-300 dark:bg-slate-900 bg-white dark:text-slate-300 text-slate-700 dark:hover:border-slate-600 hover:border-slate-400"
+                        ? 'dark:border-green-500 border-green-400 dark:bg-green-950/50 bg-green-50 dark:text-green-400 text-green-600'
+                        : 'dark:border-slate-700 border-slate-300 dark:bg-slate-900 bg-white dark:text-slate-300 text-slate-700 dark:hover:border-slate-600 hover:border-slate-400'
                     )}
                   >
                     <div className="flex items-center justify-between w-full">
@@ -440,7 +440,7 @@ export default function Home() {
             <div className="flex flex-col md:hidden gap-2">
               <button
                 onClick={() => setShowFilters(true)}
-                className="flex items-center gap-2 px-4 py-3 rounded-xl border-2 font-medium transition-all hover:scale-105 dark:border-slate-700 border-slate-300 dark:bg-slate-900 bg-white dark:text-slate-300 text-slate-700"
+                className="flex items-center gap-2 px-4 py-2 md:py-3 rounded-xl border-2 font-medium transition-all hover:scale-105 dark:border-slate-700 border-slate-300 dark:bg-slate-900 bg-white dark:text-slate-300 text-slate-700 dark:hover:border-slate-600 hover:border-slate-400"
               >
                 <Filter size={16} className="dark:text-sky-400 text-sky-600" />
                 <span>Filter sources</span>
@@ -463,9 +463,9 @@ export default function Home() {
 
           {Object.keys(errors).length > 0 && (
             <div className={cn(
-              "mb-6 p-4 rounded-xl border-2 flex items-start gap-3",
-              "dark:border-red-900/50 border-red-200",
-              "dark:bg-red-950/30 bg-red-50"
+              'mb-6 p-4 rounded-xl border-2 flex items-start gap-3',
+              'dark:border-red-900/50 border-red-200',
+              'dark:bg-red-950/30 bg-red-50'
             )}>
               <AlertCircle size={18} className="dark:text-red-400 text-red-600 flex-shrink-0 mt-0.5" />
               <div className="flex-1">
@@ -492,30 +492,33 @@ export default function Home() {
 
           <div className={cn(
             viewMode === 'grid' 
-              ? "grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" 
-              : "flex flex-col gap-4"
+              ? 'grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' 
+              : 'flex flex-col gap-4'
           )}>
             {loading.size > 0 && sortedItems.length === 0 && Object.keys(errors).length === 0 ? (
               <div className="col-span-full text-center py-20">
                 <div className={cn(
-                  "inline-flex items-center justify-center w-16 h-16 mb-4 rounded-2xl animate-pulse",
-                  "dark:bg-slate-900 bg-slate-100"
+                  'inline-flex items-center justify-center w-16 h-16 mb-4 rounded-2xl animate-pulse',
+                  'dark:bg-slate-900 bg-slate-100'
                 )}>
                   <Newspaper className="dark:text-slate-600 text-slate-400" size={32} />
                 </div>
-                <p className="dark:text-slate-500 text-slate-600 mb-2 text-sm">
+                <p className="dark:text-slate-500 text-slate-600 mb-2">
                   Loading {activeTab === 'news' ? 'news' : 'indie games'}...
+                </p>
+                <p className="dark:text-slate-600 text-slate-500 text-sm">
+                  Content will appear as it loads
                 </p>
               </div>
             ) : sortedItems.length === 0 && loading.size === 0 ? (
               <div className="col-span-full text-center py-20">
                 <div className={cn(
-                  "inline-flex items-center justify-center w-16 h-16 mb-4 rounded-2xl",
-                  "dark:bg-slate-900 bg-slate-100"
+                  'inline-flex items-center justify-center w-16 h-16 mb-4 rounded-2xl',
+                  'dark:bg-slate-900 bg-slate-100'
                 )}>
                   <Search className="dark:text-slate-600 text-slate-400" size={32} />
                 </div>
-                <p className="dark:text-slate-500 text-slate-600 text-sm">
+                <p className="dark:text-slate-500 text-slate-600">
                   No {activeTab === 'news' ? 'articles' : 'games'} found
                 </p>
               </div>
@@ -524,184 +527,139 @@ export default function Home() {
                 <article
                   key={idx}
                   className={cn(
-                    "group relative rounded-2xl border-2 transition-all hover:scale-[1.02] overflow-hidden",
-                    "dark:bg-slate-900 bg-white",
-                    "dark:border-slate-700 border-slate-300",
-                    "dark:hover:border-sky-500 hover:border-sky-400",
-                    "dark:hover:shadow-xl hover:shadow-lg",
-                    "dark:hover:shadow-sky-500/10 hover:shadow-sky-400/10",
-                    viewMode === 'list' ? "flex flex-col md:flex-row gap-4" : ""
+                    'group relative rounded-2xl border-2 transition-all hover:scale-[1.02] overflow-hidden',
+                    'dark:bg-slate-900 bg-white',
+                    'dark:border-slate-700 border-slate-300',
+                    'dark:hover:border-sky-500 hover:border-sky-400',
+                    'dark:hover:shadow-xl hover:shadow-lg',
+                    'dark:hover:shadow-sky-500/10 hover:shadow-sky-400/10',
+                    viewMode === 'list' ? 'flex flex-col md:flex-row gap-4' : ''
                   )}
                 >
-                  {viewMode === 'list' ? (
-                    <>
-                      {item.image && (
-                        <div className="relative w-full md:w-48 h-32 md:h-36 flex-shrink-0 overflow-hidden bg-slate-800">
-                          <img
-                            src={item.image}
-                            alt={item.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                            onError={(e) => {
-                              e.currentTarget.style.display = 'none';
-                            }}
-                          />
-                        </div>
-                      )}
-                      <div className="flex-1 p-4 md:p-5 flex flex-col justify-between">
-                        <div>
-                          <div className="inline-flex items-center gap-2 mb-2">
-                            <div className={cn(
-                              "inline-flex items-center gap-1 px-3 py-1 text-xs font-medium rounded-full",
-                              "dark:bg-sky-950/50 bg-sky-50 dark:text-sky-400 text-sky-600 border-2 dark:border-sky-800 border-sky-200"
-                            )}>
-                              {FEED_SOURCES.find(s => s.id === item.source)?.icon}
-                              <span className="ml-1">{FEED_SOURCES.find(s => s.id === item.source)?.name}</span>
-                            </div>
-                            {item.category && (
-                              <div className={cn(
-                                "inline-flex items-center gap-1 px-2 py-1 text-xs font-medium rounded-full",
-                                "dark:bg-slate-800 bg-slate-100 dark:text-slate-300 text-slate-600 border-2 dark:border-slate-700 border-slate-200"
-                              )}>
-                                {item.category.replace(/<[^>]+>/g, '')}
-                              </div>
-                            )}
-                          </div>
-                          <h3 className={cn(
-                            "font-bold text-base md:text-lg mb-2 line-clamp-2 group-hover:text-sky-500 transition-colors",
-                            "dark:text-white text-slate-900"
-                          )}>
-                            {item.title}
-                          </h3>
-                          {item.description && (
-                            <p className={cn(
-                              "text-xs md:text-sm mb-3 line-clamp-2",
-                              "dark:text-slate-400 text-slate-600"
-                            )}>
-                              {item.description.replace(/<[^>]+>/g, '').slice(0, 150)}
-                            </p>
-                          )}
-                        </div>
+                  {item.image && (
+                    <div className={viewMode === 'list' ? 'relative w-full md:w-48 h-32 md:h-36 flex-shrink-0 overflow-hidden bg-slate-800' : 'relative w-full aspect-video overflow-hidden bg-slate-800'}>
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none';
+                        }}
+                      />
+                    </div>
+                  )}
+
+                  <div className={viewMode === 'list' ? 'flex-1 p-4 md:p-5 flex flex-col justify-between' : 'p-4 md:p-6'}>
+                    <div>
+                      <div className="flex items-start justify-between mb-3">
                         <div className={cn(
-                          "flex items-center justify-between gap-3 text-xs",
-                          "dark:border-slate-700 border-slate-200",
-                          "dark:text-slate-500 text-slate-600",
-                          "pt-3 border-t-2"
+                          'inline-flex items-center gap-2 px-3 py-1 text-xs font-medium rounded-full',
+                          'dark:bg-sky-950/50 bg-sky-50 dark:text-sky-400 text-sky-600 border-2 dark:border-sky-800 border-sky-200'
                         )}>
-                          <div className="flex items-center gap-2">
-                            <Clock size={12} />
-                            <span>
-                              {item.pubDate 
-                                ? new Date(item.pubDate).toLocaleDateString('en-US', {
-                                    month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
-                                  })
-                                : 'Unknown'}
-                            </span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <button
-                              onClick={(e) => {
-                                e.preventDefault();
-                                toggleBookmark(item.link);
-                              }}
-                              className="p-1.5 rounded-lg transition-all hover:scale-110"
-                              title={bookmarks.has(item.link) ? 'Remove bookmark' : 'Add bookmark'}
-                            >
-                              {bookmarks.has(item.link) ? (
-                                <BookmarkCheck size={16} className="dark:text-sky-400 text-sky-600" />
-                              ) : (
-                                <Bookmark size={16} className="dark:text-slate-400 text-slate-600" />
-                              )}
-                            </button>
-                            <button
-                              onClick={(e) => {
-                                e.preventDefault();
-                                shareArticle(item.title, item.link);
-                              }}
-                              className="p-1.5 rounded-lg transition-all hover:scale-110"
-                              title="Share"
-                            >
-                              <Share2 size={16} className="dark:text-slate-400 text-slate-600" />
-                            </button>
-                            <a
-                              href={item.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="p-1.5 rounded-lg transition-all hover:scale-110 dark:text-sky-400 text-sky-600"
-                              title="Open article"
-                            >
-                              <TrendingUp size={16} />
-                            </a>
-                          </div>
+                          {FEED_SOURCES.find(s => s.id === item.source)?.icon}
+                          <span className="ml-1">{FEED_SOURCES.find(s => s.id === item.source)?.name}</span>
                         </div>
+
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            toggleBookmark(item.link);
+                          }}
+                          className={viewMode === 'grid' ? 'p-2' : 'p-1.5'}
+                          className="rounded-lg transition-all hover:scale-110"
+                          title={bookmarks.has(item.link) ? 'Remove bookmark' : 'Add bookmark'}
+                        >
+                          {bookmarks.has(item.link) ? (
+                            <BookmarkCheck size={16} className="dark:text-sky-400 text-sky-600" />
+                          ) : (
+                            <Bookmark size={16} className="dark:text-slate-400 text-slate-600" />
+                          )}
+                        </button>
                       </div>
-                    </>
-                  ) : (
-                    <>
-                      {item.image && (
-                        <div className="relative w-full aspect-video overflow-hidden bg-slate-800">
-                          <img
-                            src={item.image}
-                            alt={item.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                            onError={(e) => {
-                              e.currentTarget.style.display = 'none';
-                            }}
-                          />
+
+                      {item.category && (
+                        <div className={cn(
+                          'inline-flex items-center gap-1 px-3 py-1 mb-3 text-xs font-medium rounded-full',
+                          'dark:bg-slate-800 bg-slate-100 dark:text-slate-300 text-slate-600 border-2 dark:border-slate-700 border-slate-200'
+                        )}>
+                          {item.category.replace(/<[^>]+>/g, '')}
                         </div>
                       )}
-                      <div className="p-4 md:p-6">
-                        <div className="flex items-start justify-between mb-3">
-                          <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-medium rounded-full dark:bg-sky-950/50 bg-sky-50 dark:text-sky-400 text-sky-600 border-2 dark:border-sky-800 border-sky-200">
-                            {FEED_SOURCES.find(s => s.id === item.source)?.icon}
-                            <span className="ml-1">{FEED_SOURCES.find(s => s.id === item.source)?.name}</span>
-                          </div>
-                          <button
-                            onClick={(e) => {
-                              e.preventDefault();
-                              toggleBookmark(item.link);
-                            }}
-                            className="p-1.5 rounded-lg transition-all hover:scale-110"
-                            title={bookmarks.has(item.link) ? 'Remove bookmark' : 'Add bookmark'}
-                          >
-                            {bookmarks.has(item.link) ? (
-                              <BookmarkCheck size={16} className="dark:text-sky-400 text-sky-600" />
-                            ) : (
-                              <Bookmark size={16} className="dark:text-slate-400 text-slate-600" />
-                            )}
-                          </button>
-                        </div>
-                        <h3 className={cn(
-                          "font-bold text-base md:text-lg mb-3 line-clamp-2 group-hover:text-sky-500 transition-colors",
-                          "dark:text-white text-slate-900"
+
+                      <h3 className={cn(
+                        'font-bold text-base md:text-lg mb-2 md:mb-3 line-clamp-2 group-hover:text-sky-500 transition-colors',
+                        'dark:text-white text-slate-900'
+                      )}>
+                        {item.title}
+                      </h3>
+
+                      {item.description && (
+                        <p className={cn(
+                          'text-xs md:text-sm mb-3 md:mb-4 line-clamp-2 md:line-clamp-3',
+                          'dark:text-slate-400 text-slate-600'
                         )}>
-                          {item.title}
-                        </h3>
-                        {item.description && (
-                          <p className={cn(
-                            "text-xs md:text-sm mb-4 line-clamp-3",
-                            "dark:text-slate-400 text-slate-600"
-                          )}>
-                            {item.description.replace(/<[^>]+>/g, '').slice(0, 150)}
-                          </p>
-                        )}
+                          {item.description.replace(/<[^>]+>/g, '').slice(0, 150)}
+                        </p>
+                      )}
+                    </div>
+
+                    <div className={cn(
+                      'flex items-center justify-between gap-3 text-xs',
+                      'dark:border-slate-700 border-slate-200',
+                      'dark:text-slate-500 text-slate-600',
+                      'pt-3 md:pt-4 border-t-2'
+                    )}>
+                      <div className="flex items-center gap-2">
+                        <Clock size={12} />
+                        <span>
+                          {item.pubDate 
+                            ? new Date(item.pubDate).toLocaleDateString('en-US', {
+                                month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
+                              })
+                            : 'Unknown'}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            shareArticle(item.title, item.link);
+                          }}
+                          className="p-1.5 rounded-lg transition-all hover:scale-110"
+                          title="Share"
+                        >
+                          <Share2 size={14} className="dark:text-slate-400 text-slate-600" />
+                        </button>
                         <a
                           href={item.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={cn(
-                            "inline-flex items-center gap-2 px-4 py-2 rounded-xl border-2 text-sm font-medium transition-all hover:scale-105",
-                            "dark:border-slate-700 border-slate-300",
-                            "dark:bg-slate-800 bg-slate-100",
-                            "dark:text-white text-slate-900",
-                            "dark:hover:border-sky-500 hover:border-sky-400 dark:hover:dark:text-white hover:text-sky-500"
-                          )}
+                          className="p-1.5 rounded-lg transition-all hover:scale-110 dark:text-sky-400 text-sky-600"
+                          title="Open article"
                         >
-                          <span>Read more</span>
-                          <TrendingUp size={16} />
+                          <TrendingUp size={14} />
                         </a>
                       </div>
-                    </>
-                  )}
+                    </div>
+
+                    <div className={viewMode === 'list' && 'hidden md:block'}>
+                      <a
+                        href={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={cn(
+                          'inline-flex items-center gap-2 px-4 py-2 rounded-xl border-2 text-sm font-medium transition-all hover:scale-105',
+                          'dark:border-slate-700 border-slate-300',
+                          'dark:bg-slate-800 bg-slate-100',
+                          'dark:text-white text-slate-900',
+                          'dark:hover:border-sky-500 hover:border-sky-400 dark:hover:dark:text-white hover:text-sky-500'
+                        )}
+                      >
+                        <span>Read more</span>
+                        <TrendingUp size={16} />
+                      </a>
+                    </div>
+                  </div>
                 </article>
               ))
             )}
